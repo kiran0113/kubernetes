@@ -15,10 +15,8 @@ spec:
     spec:
       containers:
         - name: {{ .name }}
-          image: {{ .image.repository }}:{{ .image.tag }}
-          imagePullPolicy: {{ .image.pullPolicy }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
           ports:
             - containerPort: {{ .containerPort }}
 ---
 {{- end }}
-
