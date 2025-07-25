@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample-multi-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kiran0113/kubernetes.git      # ✅ Replace with your actual repo
+    targetRevision: main
+    path: helm/sample
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
