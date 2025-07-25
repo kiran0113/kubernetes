@@ -48,4 +48,3 @@ apps:
         - hosts:
             - app2.kubeace.com
           secretName: sample-app2-tls
-
