@@ -6,10 +6,10 @@ metadata:
 spec:
   selector:
     app: {{ .name }}
-  type: {{ .service.type }}
   ports:
-    - port: {{ .service.port }}
+    - protocol: TCP
+      port: {{ .service.port }}
       targetPort: {{ .containerPort }}
+  type: ClusterIP
 ---
 {{- end }}
-
