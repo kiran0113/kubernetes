@@ -1,5 +1,5 @@
 apps:
-  - name: sample-app
+  - name: sample-app-test
     image:
       repository: kiranyn/app1
       tag: latest
@@ -10,21 +10,10 @@ apps:
       port: 80
     ingress:
       enabled: true
-      className: nginx
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hosts:
-        - host: app1.kubeace.com
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - hosts:
-            - app1.kubeace.com
-          secretName: sample-app-tls
+      host: app1.kubeace.com
+      tlsSecret: sample-app1-tl
 
-  - name: sample-app2
+  - name: sample-app2-test
     image:
       repository: kiranyn/app2
       tag: latest
@@ -35,16 +24,5 @@ apps:
       port: 80
     ingress:
       enabled: true
-      className: nginx
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hosts:
-        - host: app2.kubeace.com
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - hosts:
-            - app2.kubeace.com
-          secretName: sample-app2-tls
+      host: app2.kubeace.com
+      tlsSecret: sample-app2-tl
